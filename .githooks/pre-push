@@ -1,0 +1,8 @@
+#!/bin/sh
+# Pre-push guard: block a push that doesn't build from a clean install.
+# Enable once with:  git config core.hooksPath .githooks
+set -e
+echo "pre-push: verifying clean build…"
+npm ci
+npm run build
+echo "pre-push: build OK"
